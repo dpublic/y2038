@@ -26,7 +26,7 @@ To install, simply copy postime64.h, time64.c, time64.h, time64_config.h, time64
 
 To use, replace the corresponding functions above.
 
-Also, replace #include <time.h> and #include "time.h" (if not using a custom time.h file.) with #include "postime64.sh"
+Also, replace #include \<time.h\> and #include "time.h" (if not using a custom time.h file.) with #include "postime64.sh"
 
 To test sample code, run "make" in testpostime64 directory and run the executable.
 
