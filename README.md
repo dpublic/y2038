@@ -3,6 +3,14 @@ y2038 postime64
 
 This is a fork of https://github.com/schwern/y2038 that includes a separate postime64.h file that defines convenience functions that are function replaceable to the standard gmtime_r() and localtime_r().
 
+When they are used instead, they effectively pushes the rollover time from year 2038 to year 2106 by interpreting negative time (pre 1970) as an extension of positive time.
+
+The thinking here is that all OS releases will be 64 bit or greater by then.  (Think about how there is no mainstream 16 bit OS today.)
+
+This code will build and function under 64 bit OS when the time comes to compile your application under 64 bit OS.
+
+The advantage is that they require minimum changes to your code.
+
 THESE CONVENIENCE FUNCTIONS REQUIRE THE INPUT TIME_T TIME TO BE POSITIVE IN THE UNSIGNED LONG RANGE (1 JANUARY 1970 TO 7 FEBRUARY 2106).
 
 THEY WILL NOT SUPPORT NEGATIVE TIME (PRE 1970) IN 32 BIT OSES.
@@ -40,5 +48,6 @@ Also, if your application uses time_t values in calculations that may result in 
 
 The bottom line is that you must know your code.
 
-Finally, these functions built and run under 32 bit and 64 bit OSes will return the same result so the same code is portable.
+These functions built and run under 32 bit and 64 bit OSes will return the same result so the same code is portable.
 
+Finally, this code has only been tested under 32 and 64 bit Linux but you can run the testpostime64 sample program to verify on your system.
